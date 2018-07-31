@@ -1,3 +1,31 @@
-<p>
-  task works!
-</p>
+<section class="home-container">
+      <div class="col-sm-12 col-md-12 col-lg-12 task-row row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <a (click)="addTask()"><i class="fa fa-plus-circle" style="color: skyblue;" title="Add"></i>Add</a>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">ID</div>
+        <div class="col-sm-3 col-md-3 col-lg-3">Task Name</div>
+        <div class="col-sm-3 col-md-3 col-lg-3">Task Description</div>
+      </div>
+
+  <div class="row col-sm-12 col-md-12 col-lg-12 task-row" *ngFor="let task of taskList;let i=index;">
+      <div class="col-sm-3 col-md-3 col-lg-3">
+        <a (click)="removeTask(i)" *ngIf="!task.isEdit"><i class="fa fa-trash" aria-hidden="true" title="delete"></i></a>&nbsp;&nbsp;
+        <a (click)="editTask(task)" *ngIf="!task.isEdit"><i class="fa fa-pencil" aria-hidden="true" title="edit"></i></a>
+        <a (click)="saveTask(task)" *ngIf="task.isEdit"><i class="fa fa-floppy-o" aria-hidden="true" title="save"></i></a>&nbsp;&nbsp;
+        <a (click)="cancelTask(i)" *ngIf="task.isEdit"><i class="fa fa-times" aria-hidden="true" title="remove"></i></a>&nbsp;&nbsp;
+      </div>
+      <div class="col-sm-3 col-md-3 col-lg-3">
+        <span *ngIf="!task.isEdit">{{task.id}}</span>
+        <input type="text" name="taskId" id="taskId" [(ngModel)]="task.id" *ngIf="task.isEdit">
+      </div>
+      <div class="col-sm-3 col-md-3 col-lg-3">
+       <span *ngIf="!task.isEdit"> {{task.name}}</span>
+        <input type="text" name="taskId" id="taskId" [(ngModel)]="task.name" *ngIf="task.isEdit">
+      </div>
+      <div class="col-sm-3 col-md-3 col-lg-3">
+        <span *ngIf="!task.isEdit">{{task.description}}</span>
+        <input type="text" name="taskId" id="taskId" [(ngModel)]="task.description" *ngIf="task.isEdit">
+      </div>
+    </div>
+</section>
