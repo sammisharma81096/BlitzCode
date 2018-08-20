@@ -1,0 +1,36 @@
+<div class="modal-content">
+  <div class="modal-header">
+      <h4 class="modal-title text-center">Add Task </h4>
+      <button id="cash1" type="button" class="close no-padding" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  <div class="modal-body">
+      <div class="row col-sm-12 col-md-12 col-lg-12 no-padding">
+        <div class="col-sm-4 col-md-4 col-lg-4">Task ID : </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+          <input type="text" name="taskId" id="taskId" [(ngModel)]="task.id" class="margin-bottom-5">
+        </div>
+      </div>
+      <div class="row col-sm-12 col-md-12 col-lg-12 no-padding">
+        <div class="col-sm-4 col-md-4 col-lg-4">Task Name : </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <input type="text" name="taskId" id="taskId" [(ngModel)]="task.name" class="margin-bottom-5">
+        </div>
+    </div>
+    <div class="row col-sm-12 col-md-12 col-lg-12 no-padding">
+        <div class="col-sm-4 col-md-4 col-lg-4">Task Description : </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <input type="text" name="taskId" id="taskId" [(ngModel)]="task.description" class="margin-bottom-5">
+        </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <div class="row controlBtn">
+        <div class="col-md-11 text-right">
+          <button [disabled]="formDisabled" id="cash3" mat-button type="submit" (click)="saveTask()">
+          <i class="zmdi zmdi-card-sd"></i> Save</button>
+        </div>
+      </div>
+  </div>
+</div>
