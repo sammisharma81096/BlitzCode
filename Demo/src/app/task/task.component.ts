@@ -21,8 +21,7 @@ export class TaskComponent implements OnInit {
   public taskModel: any;
   constructor(private modalService: NgbModal) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   removeTask(i){
     this.taskList.splice(i,1);
@@ -52,13 +51,7 @@ export class TaskComponent implements OnInit {
 
   cancelTask(index){
     this.taskList[index].isEdit = false;
-    if(this.isNew){
-      this.taskList.splice(index,1);
-      this.isNew = false;
-    }
-    else{
-      this.taskList[index] = this.taskModel;
-    }
+    this.taskList[index] = this.taskModel;
   }
 
   getTask(){
@@ -69,5 +62,4 @@ export class TaskComponent implements OnInit {
       "isEdit": true
     }
   }
-
 }
