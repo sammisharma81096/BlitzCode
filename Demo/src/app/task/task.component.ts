@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @Component({
   selector: 'app-task',
@@ -17,25 +19,19 @@ export class TaskComponent implements OnInit {
   ];
   public isNew: boolean;
   public taskModel: any;
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   removeTask(i){
     this.taskList.splice(i,1);
   }
 
   addTask(){
-    let isTaskEditted = this.taskList.filter(task => task.isEdit == true)[0];
-    if(!isTaskEditted){
-      const taskObj = this.getTask();
-      this.taskList.push(taskObj);
-      this.isNew = true;
-    }
-    else {
-      alert("Please Save editted task before adding new !!!");
-    }
+    const modalRef = this.modalService.open(AddTaskComponent, { windowClass: 'modal-window' });    
+      modalRef.componentInstance.action.subscribe(modelResponse => {
+      this.taskList.push(modelResponse);
+      });
   }
 
   editTask(task){
@@ -55,18 +51,7 @@ export class TaskComponent implements OnInit {
 
   cancelTask(index){
     this.taskList[index].isEdit = false;
-    if(this.isNew){
-      this.taskList.splice(index,1);
-      this.isNew = false;
-    }
-    else{
-      this.taskList[index] = this.taskModel;
-    }
-  }
-
-  saveTask(task){
-    task.isEdit = false;
-    this.isNew = false;
+    this.taskList[index] = this.taskModel;
   }
 
   getTask(){
@@ -77,5 +62,4 @@ export class TaskComponent implements OnInit {
       "isEdit": true
     }
   }
-
 }
