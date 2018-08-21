@@ -17,7 +17,6 @@ export class TaskComponent implements OnInit {
       "isEdit": false
     }
   ];
-  public isNew: boolean;
   public taskModel: any;
   constructor(private modalService: NgbModal) { }
 
@@ -47,6 +46,10 @@ export class TaskComponent implements OnInit {
     else {
       alert("Please Save editted task before adding new !!!");
     }
+  }
+
+  saveTask(task){
+    task.isEdit = false;
   }
 
   cancelTask(index){
